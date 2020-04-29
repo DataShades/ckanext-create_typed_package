@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+{% block scripts %}
+    {{ super() }}
+
+    {% if not h.ctp_use_separate_route() %}
+        {% set type = 'asset' if h.ckan_version() > '2.9' else 'resource' %}
+        {% include 'create_typed_package/snippets/' ~ type ~ '.html' %}
+    {% endif %}
+
+{% endblock scripts %}

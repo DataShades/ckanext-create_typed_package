@@ -1,0 +1,8 @@
+package_type_selector:
+  filter: rjsmin
+  output: ckanext-create_typed_package/%(version)s-package_type_selector.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - scripts/package-type-selector.js
