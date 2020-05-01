@@ -1,13 +1,6 @@
 import pytest
 
-import ckantoolkit as tk
-
-import ckan.model as model
 import ckan.tests.helpers as helpers
-import ckan.tests.factories as factories
-
-
-# @pytest.mark.usefixtures('clean_db')
 
 
 @pytest.mark.usefixtures("with_plugins")
@@ -82,12 +75,13 @@ class TestCtpListTypes(object):
 
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.json "
+        "ckanext.scheming:camel_photos.json",
     )
     @pytest.mark.ckan_config(
         "ckan.plugins", "create_typed_package scheming_datasets"
     )
-    def test_ctp_list_types_using_two_schemas_with_scheming_disabled(self, app):
+    def test_ctp_list_types_using_two_schemas_scheming_disabled(self, app):
         types = helpers.call_action("ctp_list_types")
         assert sorted(types) == ["camel-photos", "dataset"]
 
@@ -95,11 +89,12 @@ class TestCtpListTypes(object):
         "ckan.plugins",
         "create_typed_package scheming_datasets example_idatasetform_v6",
     )
-    @pytest.mark.ckan_config(
+    @pytpest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.json "
+        "ckanext.scheming:camel_photos.json",
     )
-    def test_ctp_list_types_using_idatasetform_v6_and_two_schemas_not_using_scheming(
+    def test_ctp_list_types_using_idatasetform_v6_two_schemas_not_scheming(
         self,
     ):
         types = helpers.call_action("ctp_list_types")
@@ -111,10 +106,11 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.json "
+        "ckanext.scheming:camel_photos.json",
     )
     @pytest.mark.ckan_config("create_typed_package.use_scheming", "true")
-    def test_ctp_list_types_using_idatasetform_v6_and_two_schemas_using_scheming(
+    def test_ctp_list_types_using_idatasetform_v6_two_schemas_scheming(
         self,
     ):
         types = helpers.call_action("ctp_list_types")

@@ -1,7 +1,7 @@
 jQuery(document).ready(
   (function($, ckan) {
     "use strict";
-    var links = $('[href$="/dataset/new"]');
+    var links = $('[href*="/dataset/new"]');
     if (!links.length) {
       return;
     }
@@ -43,7 +43,7 @@ jQuery(document).ready(
       .on("click", function() {
         var type = modal.find("#field-ctp-package-type").val();
         var url = ckan.url(type + "/new");
-        window.location.replace(url);
+        window.location.href = url;
       });
     modal.find(".btn-cancel").text(ckan.i18n._("Cancel"));
 

@@ -20,7 +20,7 @@ def get_blueprints():
 class SelectDatasetTypeView(MethodView):
     def post(self):
         type_ = tk.request.form['type']
-        return tk.redirect_to(f'{type_}.new')
+        return tk.redirect_to(type_ + '.new')
 
     def get(self):
         types = tk.get_action('ctp_list_types')({'user': tk.c.user}, {})
