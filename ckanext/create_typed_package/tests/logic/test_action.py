@@ -89,7 +89,7 @@ class TestCtpListTypes(object):
         "ckan.plugins",
         "create_typed_package scheming_datasets example_idatasetform_v6",
     )
-    @pytpest.mark.ckan_config(
+    @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
         "ckanext.scheming:ckan_dataset.json "
         "ckanext.scheming:camel_photos.json",
