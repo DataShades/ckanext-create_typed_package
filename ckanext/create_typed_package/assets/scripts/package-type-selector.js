@@ -1,7 +1,13 @@
 jQuery(document).ready(
   (function($, ckan) {
     "use strict";
-    var links = $('[href*="/dataset/new"]');
+    var newUrl = "/dataset/new";
+    var links = $('[href*="' + newUrl + '"]').filter(function(idx, el) {
+      return (
+        el.pathname.lastIndexOf(newUrl) == el.pathname.length - newUrl.length
+      );
+    });
+
     if (!links.length) {
       return;
     }
