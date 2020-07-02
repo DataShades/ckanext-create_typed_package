@@ -10,7 +10,7 @@ ckanext-create_typed_package
 
 Add dataset type selector to the "Add dataset" button.
 
-![Type selector](selector.png)
+.. image:: https://github.com/DataShades/ckanext-create_typed_package/raw/master/selector.png
 
 ------------
 Installation
