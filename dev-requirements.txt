@@ -1,3 +1,4 @@
 flake8    # for the travis build
 ckanext-scheming # imported in tests
+ckanapi
 pytest-randomly
