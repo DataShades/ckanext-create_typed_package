@@ -8,9 +8,9 @@
 ckanext-create_typed_package
 ============================
 
-.. Put a description of your extension here:
-   What does it do? What features does it have?
-   Consider including some screenshots or embedding a video!
+Add dataset type selector to the "Add dataset" button.
+
+![Type selector](selector.png)
 
 ------------
 Installation
@@ -45,47 +45,26 @@ Config settings
 
 ::
 
-   # The minimum number of hours to wait before re-checking a resource
+   # Build list of package types using ckanext-scheming API instead of
+   # internal CKAN's package_type registry
    # (optional, default: false).
    create_typed_package.use_scheming = true
 
-   # The minimum number of hours to wait before re-checking a resource
+   # Additional types that are not are not automatically added to the
+   # list for some reason
    # (optional, default: []).
    create_typed_package.additional_types = custom_type another_type
 
-   # The minimum number of hours to wait before re-checking a resource
+   # Package types that need to be excluded from the list of available
+   # types
    # (optional, default: []).
    create_typed_package.exclude_types = custom_type another_type
 
-   # The minimum number of hours to wait before re-checking a resource
+   # After clicking on "Add datset" button redirect user to special
+   # page with dataset type selector instead of using in-place modal
    # (optional, default: false).
    create_typed_package.use_separate_route = true
 
-   # The minimum number of hours to wait before re-checking a resource
+   # URL where the special page with dataset type selector will be registered.
    # (optional, default: /dataset/select-type).
    create_typed_package.route_path = /create-package/select-type
-
-----------------------
-Developer installation
-----------------------
-
-To install ckanext-create_typed_package for development, activate your CKAN virtualenv and
-do::
-
-    git clone https://github.com/DataShades/ckanext-create_typed_package.git
-    cd ckanext-create_typed_package
-    python setup.py develop
-
-
------
-Tests
------
-
-To run the tests, do::
-
-    pytest --ckan-ini=test.ini
-
-To run the tests and produce a coverage report, first make sure you have
-``pytest-cov`` installed in your virtualenv (``pip install pytest-cov``) then run::
-
-    pytest --ckan-ini=test.ini  --cov=ckanext.create_typed_package

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from operator import itemgetter
+
 import ckan.plugins as p
 import ckantoolkit as tk
 
@@ -23,10 +25,10 @@ def ctp_list_types(context, data_dict):
         set(types).union(_additional_types()).difference(_exclude_types())
     )
     if with_lables:
-        result = [
+        result = sorted([
             {'name': t, 'label': tk._(t)}
             for t in result
-        ]
+        ], key=itemgetter('label'))
     return result
 
 
