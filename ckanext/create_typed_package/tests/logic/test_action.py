@@ -54,7 +54,7 @@ class TestCtpListTypes(object):
         "ckan.plugins", "create_typed_package scheming_datasets"
     )
     @pytest.mark.ckan_config(
-        "scheming.dataset_schemas", "ckanext.scheming:ckan_dataset.json"
+        "scheming.dataset_schemas", "ckanext.scheming:ckan_dataset.yaml"
     )
     @pytest.mark.ckan_config("create_typed_package.use_scheming", "true")
     def test_ctp_list_types_using_one_schema(self):
@@ -66,7 +66,7 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.yaml ckanext.scheming:camel_photos.yaml",
     )
     @pytest.mark.ckan_config("create_typed_package.use_scheming", "true")
     def test_ctp_list_types_using_two_schemas(self):
@@ -75,8 +75,8 @@ class TestCtpListTypes(object):
 
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json "
-        "ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.yaml "
+        "ckanext.scheming:camel_photos.yaml",
     )
     @pytest.mark.ckan_config(
         "ckan.plugins", "create_typed_package scheming_datasets"
@@ -91,8 +91,8 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json "
-        "ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.yaml "
+        "ckanext.scheming:camel_photos.yaml",
     )
     def test_ctp_list_types_using_idatasetform_v6_two_schemas_not_scheming(
         self,
@@ -106,8 +106,8 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.json "
-        "ckanext.scheming:camel_photos.json",
+        "ckanext.scheming:ckan_dataset.yaml "
+        "ckanext.scheming:camel_photos.yaml",
     )
     @pytest.mark.ckan_config("create_typed_package.use_scheming", "true")
     def test_ctp_list_types_using_idatasetform_v6_two_schemas_scheming(
