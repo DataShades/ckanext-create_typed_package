@@ -5,11 +5,22 @@ from operator import itemgetter
 import ckan.plugins as p
 import ckantoolkit as tk
 
+CONFIG_LABEL_PREFIX = "create_typed_package.label_for."
+
 
 def get_actions():
     return {
         "ctp_list_types": ctp_list_types,
     }
+
+
+def _labels_from_config():
+    labels = {}
+    for option, value in tk.config.items():
+        if not option.startswith(CONFIG_LABEL_PREFIX):
+            continue
+        labels[option[len(CONFIG_LABEL_PREFIX) :]] = value
+    return labels
 
 
 @tk.side_effect_free
@@ -23,8 +34,10 @@ def ctp_list_types(context, data_dict):
         types = _get_native_types()
     result = list(set(types).union(_additional_types()).difference(_exclude_types()))
     if with_lables:
+        labels = _labels_from_config()
         result = sorted(
-            [{"name": t, "label": tk._(t)} for t in result], key=itemgetter("label")
+            [{"name": t, "label": labels.get(t) or tk._(t)} for t in result],
+            key=itemgetter("label"),
         )
     return result
 

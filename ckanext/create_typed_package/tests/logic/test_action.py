@@ -14,6 +14,26 @@ class TestCtpListTypes(object):
         types = helpers.call_action("ctp_list_types")
         assert sorted(types) == ["dataset", "first", "second"]
 
+    @pytest.mark.ckan_config("create_typed_package.additional_types", "first second")
+    def test_ctp_list_types_with_default_labels(self):
+        types = helpers.call_action("ctp_list_types", with_labels=True)
+        assert types == [
+            {"name": "dataset", "label": "dataset"},
+            {"name": "first", "label": "first"},
+            {"name": "second", "label": "second"},
+        ]
+
+    @pytest.mark.ckan_config("create_typed_package.label_for.dataset", "Dataset")
+    @pytest.mark.ckan_config("create_typed_package.label_for.second", "#2 Dataset")
+    @pytest.mark.ckan_config("create_typed_package.additional_types", "first second")
+    def test_ctp_list_types_with_custom_labels(self):
+        types = helpers.call_action("ctp_list_types", with_labels=True)
+        assert types == [
+            {"name": "second", "label": "#2 Dataset"},
+            {"name": "dataset", "label": "Dataset"},
+            {"name": "first", "label": "first"},
+        ]
+
     @pytest.mark.ckan_config("create_typed_package.exclude_types", "dataset")
     def test_ctp_list_types_exclude(self):
         types = helpers.call_action("ctp_list_types")

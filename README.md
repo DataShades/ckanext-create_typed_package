@@ -45,3 +45,10 @@ To install ckanext-create_typed_package:
 	# URL where the special page with dataset type selector will be registered.
 	# (optional, default: /dataset/select-type).
 	create_typed_package.route_path = /create-package/select-type
+
+	# Custom label for dataset type. It will be used by `ctp_list_types`
+	# action and, as result, by the type-picker UI widget. Labels provided in a
+	# form `create_typed_package.label_for.<TYPE>`, where machine-name for a type
+	# is used instead of `<TYPE>`.
+	# (optional, default: tk._(type_machine_name)).
+	create_typed_package.label_for.dataset = Publication
