@@ -1,0 +1,10 @@
+[black]
+line-length = 79
+
+[tool.towncrier]
+issue_format = ""
+directory = "changes"
+package = "ckanext.create_typed_package"
+package_dir = "ckanext"
+filename = "CHANGELOG.rst"
+name = "ckanext-create_typed_package"

@@ -14,21 +14,18 @@ def get_actions():
 
 @tk.side_effect_free
 def ctp_list_types(context, data_dict):
-    with_lables = tk.asbool(data_dict.get('with_labels'))
+    with_lables = tk.asbool(data_dict.get("with_labels"))
 
     tk.check_access("ctp_list_types", context, data_dict)
     if _use_scheming():
         types = _get_scheming_types()
     else:
         types = _get_native_types()
-    result = list(
-        set(types).union(_additional_types()).difference(_exclude_types())
-    )
+    result = list(set(types).union(_additional_types()).difference(_exclude_types()))
     if with_lables:
-        result = sorted([
-            {'name': t, 'label': tk._(t)}
-            for t in result
-        ], key=itemgetter('label'))
+        result = sorted(
+            [{"name": t, "label": tk._(t)} for t in result], key=itemgetter("label")
+        )
     return result
 
 

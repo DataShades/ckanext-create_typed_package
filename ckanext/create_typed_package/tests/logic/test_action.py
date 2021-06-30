@@ -9,9 +9,7 @@ class TestCtpListTypes(object):
         types = helpers.call_action("ctp_list_types")
         assert types == ["dataset"]
 
-    @pytest.mark.ckan_config(
-        "create_typed_package.additional_types", "first second"
-    )
+    @pytest.mark.ckan_config("create_typed_package.additional_types", "first second")
     def test_ctp_list_types_include(self):
         types = helpers.call_action("ctp_list_types")
         assert sorted(types) == ["dataset", "first", "second"]
@@ -50,9 +48,7 @@ class TestCtpListTypes(object):
         types = helpers.call_action("ctp_list_types")
         assert types == []
 
-    @pytest.mark.ckan_config(
-        "ckan.plugins", "create_typed_package scheming_datasets"
-    )
+    @pytest.mark.ckan_config("ckan.plugins", "create_typed_package scheming_datasets")
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas", "ckanext.scheming:ckan_dataset.yaml"
     )
@@ -61,9 +57,7 @@ class TestCtpListTypes(object):
         types = helpers.call_action("ctp_list_types")
         assert types == ["dataset"]
 
-    @pytest.mark.ckan_config(
-        "ckan.plugins", "create_typed_package scheming_datasets"
-    )
+    @pytest.mark.ckan_config("ckan.plugins", "create_typed_package scheming_datasets")
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
         "ckanext.scheming:ckan_dataset.yaml ckanext.scheming:camel_photos.yaml",
@@ -75,12 +69,9 @@ class TestCtpListTypes(object):
 
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.yaml "
-        "ckanext.scheming:camel_photos.yaml",
+        "ckanext.scheming:ckan_dataset.yaml " "ckanext.scheming:camel_photos.yaml",
     )
-    @pytest.mark.ckan_config(
-        "ckan.plugins", "create_typed_package scheming_datasets"
-    )
+    @pytest.mark.ckan_config("ckan.plugins", "create_typed_package scheming_datasets")
     def test_ctp_list_types_using_two_schemas_scheming_disabled(self, app):
         types = helpers.call_action("ctp_list_types")
         assert sorted(types) == ["camel-photos", "dataset"]
@@ -91,8 +82,7 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.yaml "
-        "ckanext.scheming:camel_photos.yaml",
+        "ckanext.scheming:ckan_dataset.yaml " "ckanext.scheming:camel_photos.yaml",
     )
     def test_ctp_list_types_using_idatasetform_v6_two_schemas_not_scheming(
         self,
@@ -106,8 +96,7 @@ class TestCtpListTypes(object):
     )
     @pytest.mark.ckan_config(
         "scheming.dataset_schemas",
-        "ckanext.scheming:ckan_dataset.yaml "
-        "ckanext.scheming:camel_photos.yaml",
+        "ckanext.scheming:ckan_dataset.yaml " "ckanext.scheming:camel_photos.yaml",
     )
     @pytest.mark.ckan_config("create_typed_package.use_scheming", "true")
     def test_ctp_list_types_using_idatasetform_v6_two_schemas_scheming(
