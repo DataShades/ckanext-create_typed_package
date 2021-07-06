@@ -10,7 +10,6 @@
 {% block scripts %}
     {{ super() }}
     {% if not h.ctp_use_separate_route() %}
-        {% set type = 'asset' if h.ckan_version().split(".")[1]|int >= 9 else 'resource' %}
-        {% include 'create_typed_package/snippets/' ~ type ~ '.html' %}
+        {% include 'create_typed_package/snippets/asset.html' %}
     {% endif %}
 {% endblock scripts %}

@@ -7,7 +7,7 @@ import ckan.tests.helpers as helpers
 import ckan.tests.factories as factories
 
 
-@pytest.mark.usefixtures("clean_db", "app")
+@pytest.mark.usefixtures("clean_db", "app", "with_plugins")
 def test_ctp_list_types():
     context = {"model": model, "user": ""}
     with pytest.raises(tk.NotAuthorized):
