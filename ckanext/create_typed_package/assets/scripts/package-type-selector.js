@@ -33,12 +33,17 @@ ckan.module("ctp-type-selector", function ($, _) {
     options: {
       modalTpl: modalTpl,
       newUrl: "/dataset/new",
+      ignoreSelector: "[data-ctp-ignore]",
     },
     initialize: function () {
       var url = this.options.newUrl;
-      this.links = $('[href*="' + url + '"]').filter(function (idx, el) {
-        return el.pathname.lastIndexOf(url) == el.pathname.length - url.length;
-      });
+      this.links = $('[href*="' + url + '"]')
+        .not(this.options.ignoreSelector)
+        .filter(function (idx, el) {
+          return (
+            el.pathname.lastIndexOf(url) == el.pathname.length - url.length
+          );
+        });
       if (!this.links.length) {
         return;
       }
