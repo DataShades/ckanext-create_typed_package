@@ -21,12 +21,12 @@ class SelectDatasetTypeView(MethodView):
         return tk.redirect_to(type_ + ".new")
 
     def get(self):
-        types = tk.get_action("ctp_list_types")({"user": tk.c.user}, {})
+        types = tk.get_action("ctp_list_types")({"user": tk.c.user}, {"with_labels": True})
         extra_vars = {
             "form_snippet": "package/snippets/ctp_select_dataset_type_form.html",
             "pkg_dict": {},
             "form_vars": {
-                "package_types": [{"value": t, "text": tk._(t)} for t in types]
+                "package_types": [{"value": t["name"], "text": t["label"]} for t in types]
             },
         }
         return tk.render("package/ctp_select_dataset_type.html", extra_vars)
