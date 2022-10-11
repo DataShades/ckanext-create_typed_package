@@ -1,7 +1,7 @@
 ckan.module("ctp-type-selector", function ($, _) {
   "use strict";
   var modalTpl = [
-    '<div class="modal fade">',
+    '<div class="modal fade" tabindex="-1">',
     '<div class="modal-dialog">',
     '<div class="modal-content">',
     '<div class="modal-header">',
@@ -82,8 +82,12 @@ ckan.module("ctp-type-selector", function ($, _) {
         }
       );
       this.links.on("click", function (e) {
+        var current_link = this;
         e.preventDefault();
         modal.modal("show");
+        modal.on('hidden.bs.modal', function () {
+          $(current_link).focus();
+        })
       });
     },
   };
