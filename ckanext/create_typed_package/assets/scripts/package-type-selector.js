@@ -1,12 +1,12 @@
 ckan.module("ctp-type-selector", function ($, _) {
   "use strict";
   var modalTpl = [
-    '<div class="modal fade" tabindex="-1">',
+    '<div role="alertdialog" aria-modal="true" aria-labelledby="ds_creation_label" aria-describedby="field-ctp-package-type" class="modal fade" tabindex="-1">',
     '<div class="modal-dialog">',
     '<div class="modal-content">',
     '<div class="modal-header">',
     '<button type="button" class="close" data-dismiss="modal">×</button>',
-    '<h3 class="modal-title"></h3>',
+    '<h3 id="ds_creation_label" class="modal-title"></h3>',
     "</div>",
     '<div class="modal-body">',
 
