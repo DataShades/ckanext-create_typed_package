@@ -16,7 +16,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.2.1',
+    version='0.3.0',
 
     description='''Select dataset type when adding new data''',
     long_description=long_description,
@@ -43,8 +43,7 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
     ],
 
 
