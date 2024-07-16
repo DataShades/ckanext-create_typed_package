@@ -20,7 +20,7 @@ ckan.module("ctp-type-selector", function ($, _) {
 
     "</div>",
     '<div class="modal-footer">',
-    '<button class="btn btn-default btn-cancel" data-dismiss="modal"></button>',
+    '<button class="btn btn-default btn-cancel" data-bs-dismiss="modal"></button>',
     '<button class="btn btn-primary"></button>',
     "</div>",
     "</div>",
