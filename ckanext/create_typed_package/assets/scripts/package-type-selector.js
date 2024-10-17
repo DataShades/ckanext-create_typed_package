@@ -13,7 +13,7 @@ ckan.module("ctp-type-selector", function ($, _) {
     '<div class="control-group form-group control-medium">',
     '<label for="field-ctp-package-type" class="control-label"></label>',
     '<div class="controls">',
-    '<select id="field-ctp-package-type" class="form-control">',
+    '<select id="field-ctp-package-type" class="form-select">',
     "</select>",
     "</div>",
     "</div>",
