@@ -1,10 +1,39 @@
-[tool.black]
-line-length = 79
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
 
-[tool.towncrier]
-issue_format = ""
-directory = "changes"
-package = "ckanext.create_typed_package"
-package_dir = "ckanext"
-filename = "CHANGELOG.rst"
+[project]
 name = "ckanext-create_typed_package"
+version = "0.3.0.post1"
+description = "Select dataset type when adding new data"
+classifiers = [ "Development Status :: 4 - Beta", "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)", "Programming Language :: Python :: 3.8", "Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12",]
+keywords = [ "CKAN",]
+requires-python = ">= 3.8"
+dependencies = ["ckantoolkit"]
+authors = [
+    {name = "DataShades", email = "datashades@linkdigital.com.au"},
+    {name = "Sergey Motornyuk", email = "sergey.motornyuk@linkdigital.com.au"},
+]
+maintainers = [
+    {name = "DataShades", email = "datashades@linkdigital.com.au"},
+]
+
+
+[project.urls]
+Homepage = "https://github.com/DataShades/ckanext-collection"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"ckanext.create_typed_package" = ["assets/**/*"]
+
+
+[project.entry-points."ckan.plugins"]
+create_typed_package = "ckanext.create_typed_package.plugin:CreateTypedPackagePlugin"
+
+[project.entry-points."babel.extractors"]
+ckan = "ckan.lib.extract:extract_ckan"
+
+[tool.setuptools.packages]
+find = {}

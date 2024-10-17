@@ -1,4 +1,4 @@
 include README.rst
 include LICENSE
 include requirements.txt
-recursive-include ckanext/create_typed_package *.html *.json *.js *.less *.css *.mo webassets.yml resource.config
+recursive-include ckanext/create_typed_package *.html *.json *.js *.sass *.less *.css *.mo webassets.yml resource.config
