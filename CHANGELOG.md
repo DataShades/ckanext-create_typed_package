@@ -6,11 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
-## Unreleased
+## [v0.4.0](https://github.com/DataShades/ckanext-create_typed_package/releases/tag/v0.4.0) - 2025-03-31
 
-<small>[Compare with latest](https://github.com/DataShades/ckanext-create_typed_package/compare/v0.3.0...HEAD)</small>
+<small>[Compare with v0.3.0](https://github.com/DataShades/ckanext-create_typed_package/compare/v0.3.0...v0.4.0)</small>
 
-<!-- insertion marker -->
+### Features
+
+- add config declarations ([77d37f7](https://github.com/DataShades/ckanext-create_typed_package/commit/77d37f7eb08d06a3a7e523a1006df6ec267db691) by Sergey Motornyuk).
+
 ## [v0.3.0](https://github.com/DataShades/ckanext-create_typed_package/releases/tag/v0.3.0) - 2024-07-16
 
 <small>[Compare with v0.2.0](https://github.com/DataShades/ckanext-create_typed_package/compare/v0.2.0...v0.3.0)</small>
