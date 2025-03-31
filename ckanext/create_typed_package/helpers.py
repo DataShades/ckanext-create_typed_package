@@ -1,4 +1,7 @@
-import ckantoolkit as tk
+from __future__ import annotations
+
+import ckan.plugins.toolkit as tk
+from . import config
 
 
 def get_helpers():
@@ -8,4 +11,4 @@ def get_helpers():
 
 
 def ctp_use_separate_route():
-    return tk.asbool(tk.config.get("create_typed_package.use_separate_route"))
+    return config.use_separate_route()

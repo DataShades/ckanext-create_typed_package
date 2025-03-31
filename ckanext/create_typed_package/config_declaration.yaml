@@ -1,0 +1,32 @@
+version: 1
+groups:
+  - annotation: ckanext-create-typed-package
+    options:
+      - key: create_typed_package.route_path
+        default: /dataset/select-type
+        description: Register package type selector at the given route
+
+      - key: create_typed_package.use_separate_route
+        type: bool
+        description: |
+          Register a separate page for type selector instead of modal
+
+      - key: create_typed_package.use_scheming
+        type: bool
+        description: |
+          Discover package types registered by ckanext-scheming
+
+      - key: create_typed_package.additional_types
+        type: list
+        description: |
+          Show additional options inside type selector
+
+      - key: create_typed_package.exclude_types
+        type: list
+        description: |
+          Do not show these options inside type selector
+
+      - key: create_typed_package.sorter
+        default: "ckanext.create_typed_package.logic.action:default_sorter"
+        description: |
+          Sort type options using this function

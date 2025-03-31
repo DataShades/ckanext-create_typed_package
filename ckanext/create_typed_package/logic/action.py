@@ -1,15 +1,15 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations
 
 from operator import itemgetter
-from werkzeug.utils import import_string
 
 import ckan.plugins as p
-import ckantoolkit as tk
+
+import ckan.plugins.toolkit as tk
+
+from ckanext.create_typed_package import config
+
 
 CONFIG_LABEL_PREFIX = "create_typed_package.label_for."
-
-CONFIG_LABEL_SORTER = "create_typed_package.sorter"
-DEFAULT_LABEL_SORTER = "ckanext.create_typed_package.logic.action:default_sorter"
 
 default_sorter = itemgetter("label")
 
@@ -42,7 +42,7 @@ def ctp_list_types(context, data_dict):
 
     if with_labels:
         labels = _labels_from_config()
-        sorter = import_string(tk.config.get(CONFIG_LABEL_SORTER, DEFAULT_LABEL_SORTER))
+        sorter = config.sorter()
         result = sorted(
             [{"name": t, "label": labels.get(t) or tk._(t)} for t in result],
             key=sorter,
@@ -59,16 +59,16 @@ def _get_native_types():
 def _get_scheming_types():
     if not p.plugin_loaded("scheming_datasets"):
         return []
-    return tk.get_action("scheming_dataset_schema_list")(None, {})
+    return tk.get_action("scheming_dataset_schema_list")({}, {})
 
 
 def _use_scheming():
-    return tk.asbool(tk.config.get("create_typed_package.use_scheming"))
+    return config.use_scheming()
 
 
 def _additional_types():
-    return tk.aslist(tk.config.get("create_typed_package.additional_types"))
+    return config.additional_types()
 
 
 def _exclude_types():
-    return tk.aslist(tk.config.get("create_typed_package.exclude_types"))
+    return config.exclude_types()

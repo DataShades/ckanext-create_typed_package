@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import ckan.plugins as plugins
-import ckantoolkit as tk
+import ckan.plugins.toolkit as tk
 
 import ckanext.create_typed_package.logic.action as action
 import ckanext.create_typed_package.logic.auth as auth
@@ -7,6 +9,7 @@ import ckanext.create_typed_package.views as views
 import ckanext.create_typed_package.helpers as helpers
 
 
+@tk.blanket.config_declarations
 class CreateTypedPackagePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
