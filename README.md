@@ -61,23 +61,23 @@ listing available at `/dataset/`, you also have 3 new endpoints, one per custom
 dataset type:
 
 * `/first-type`
-  ![First type listing](img/first-type-listing.png)
+  ![First type listing](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/first-type-listing.png)
 * `/second-type`
-  ![First type listing](img/second-type-listing.png)
+  ![First type listing](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/second-type-listing.png)
 
 * `/third-type`
-  ![Third type listing](img/third-type-listing.png)
+  ![Third type listing](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/third-type-listing.png)
 
 
 On every custom page you can click **Add ???-type** and dataset creation form
 with corresponding metadata fields will be rendered.
 
-![First type form](img/first-type-form.png)
+![First type form](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/first-type-form.png)
 
 But if you go back to main `/dataset` page and click **Add dataset** there,
 you'll see the modal where you can select the exact type you want to create:
 
-![Selector inside modal](img/modal.png)
+![Selector inside modal](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/modal.png)
 
 That's the main feature provided by the current plugin.
 
@@ -90,7 +90,7 @@ not exist yet and in order to fix it, add
 reload the application and now you'll see dataset type selector on this new
 route.
 
-![Selector on separate page](img/separate-route.png)
+![Selector on separate page](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/separate-route.png)
 
 This method is more predictable but it requires modification of templates,
 that's why modal is chosen as a default.
