@@ -1,10 +1,9 @@
+import ckantoolkit as tk
 import pytest
 
-import ckantoolkit as tk
-
 import ckan.model as model
-import ckan.tests.helpers as helpers
 import ckan.tests.factories as factories
+import ckan.tests.helpers as helpers
 
 
 @pytest.mark.usefixtures("clean_db", "app", "with_plugins")

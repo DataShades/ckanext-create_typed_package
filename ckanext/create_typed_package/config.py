@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 from typing import Any, Callable
-import ckan.plugins.toolkit as tk
+
 from werkzeug.utils import import_string
 
+import ckan.plugins.toolkit as tk
 
 ROUTE_PATH = "create_typed_package.route_path"
 USE_SEPARATE_ROUTE = "create_typed_package.use_separate_route"

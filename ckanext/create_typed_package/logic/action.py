@@ -3,11 +3,9 @@ from __future__ import annotations
 from operator import itemgetter
 
 import ckan.plugins as p
-
 import ckan.plugins.toolkit as tk
 
 from ckanext.create_typed_package import config
-
 
 CONFIG_LABEL_PREFIX = "create_typed_package.label_for."
 
@@ -34,10 +32,7 @@ def ctp_list_types(context, data_dict):
     with_labels = tk.asbool(data_dict.get("with_labels"))
 
     tk.check_access("ctp_list_types", context, data_dict)
-    if _use_scheming():
-        types = _get_scheming_types()
-    else:
-        types = _get_native_types()
+    types = _get_scheming_types() if _use_scheming() else _get_native_types()
     result = list(set(types).union(_additional_types()).difference(_exclude_types()))
 
     if with_labels:

@@ -1,21 +1,19 @@
 from __future__ import annotations
 
-import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
+from ckan import plugins as p
 
-import ckanext.create_typed_package.logic.action as action
-import ckanext.create_typed_package.logic.auth as auth
-import ckanext.create_typed_package.views as views
-import ckanext.create_typed_package.helpers as helpers
+from ckanext.create_typed_package import helpers, views
+from ckanext.create_typed_package.logic import action, auth
 
 
 @tk.blanket.config_declarations
-class CreateTypedPackagePlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IActions)
-    plugins.implements(plugins.IAuthFunctions)
-    plugins.implements(plugins.IBlueprint)
-    plugins.implements(plugins.ITemplateHelpers)
+class CreateTypedPackagePlugin(p.SingletonPlugin):
+    p.implements(p.IConfigurer)
+    p.implements(p.IActions)
+    p.implements(p.IAuthFunctions)
+    p.implements(p.IBlueprint)
+    p.implements(p.ITemplateHelpers)
 
     # IConfigurer
 
