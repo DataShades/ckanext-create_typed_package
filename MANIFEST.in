@@ -1,4 +1,5 @@
 include README.md
 include LICENSE
 include requirements.txt
+recursive-include img/*.png
 recursive-include ckanext/create_typed_package  *.html *.json *.js *.less *.css *.mo *.yml *.config *.yaml

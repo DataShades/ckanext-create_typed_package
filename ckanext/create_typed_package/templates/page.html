@@ -1,10 +1,51 @@
 {% ckan_extends %}
 
 {% block page %}
-    {% if not h.ctp_use_separate_route() %}
-        <div data-module="ctp-type-selector"></div>
-    {% endif %}
+    {% block ctp_modal_module %}
+        {% if not h.ctp_use_separate_route() %}
+            <div data-module="ctp-type-selector"
+                 data-module-new-url="{{ h.url_for('dataset.new') }}"
+            ></div>
+        {% endif %}
+    {% endblock %}
+
     {{ super() }}
+
+    {% block ctp_modal_widget %}
+        {% if not h.ctp_use_separate_route() %}
+            <div id="ctp-type-selector-modal" role="alertdialog" aria-modal="true" aria-labelledby="ds_creation_label" aria-describedby="field-ctp-package-type" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="ds_creation_label" class="modal-title">
+                                {{ _("Please select type") }}
+                            </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="control-group form-group control-medium">
+                                <label for="field-ctp-package-type" class="control-label">{{ _("Type") }}</label>
+                                <div class="controls">
+                                    <select id="field-ctp-package-type" class="form-select">
+                                        {% for item in h.ctp_available_types() %}
+                                            <option value="{{ item.name }}">{{ item.label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default btn-cancel" data-bs-dismiss="modal">{{ _("Cancel") }}</button>
+                            <button class="btn btn-primary ctp-confirm">{{ _("Confirm") }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+    {% endblock %}
 {% endblock page %}
 
 {% block scripts %}

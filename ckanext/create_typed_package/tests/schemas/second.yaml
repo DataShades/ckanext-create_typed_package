@@ -1,0 +1,19 @@
+scheming_version: 2
+dataset_type: second-type
+
+dataset_fields:
+  - field_name: title
+    label: Title of the second
+    preset: title
+
+  - field_name: name
+    label: URL
+    preset: dataset_slug
+
+  - field_name: owner_org
+    label: Organization
+    preset: dataset_organization
+
+resource_fields:
+  - field_name: url
+    label: URL
