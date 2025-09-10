@@ -30,3 +30,9 @@ groups:
         default: "ckanext.create_typed_package.logic.action:default_sorter"
         description: |
           Sort type options using this function
+
+      - key: create_typed_package.replace_dataset_button
+        type: bool
+        description: |
+          Replace "Add Dataset" button with the link to type selection. Works
+          only when `create_typed_package.use_separate_route` enabled as well

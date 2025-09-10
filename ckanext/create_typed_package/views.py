@@ -17,12 +17,18 @@ def get_blueprints():
 
 
 class SelectDatasetTypeView(MethodView):
+    def _redirect(self, type: str):
+        return tk.redirect_to(type + ".new", **tk.request.args.to_dict(False))
+
     def post(self):
-        type_ = tk.request.form["type"]
-        return tk.redirect_to(type_ + ".new")
+        return self._redirect(tk.request.form["type"])
 
     def get(self):
         types = tk.get_action("ctp_list_types")({"user": tk.c.user}, {"with_labels": True})
+
+        if len(types) == 1:
+            return self._redirect(types[0]["name"])
+
         extra_vars = {
             "form_snippet": "package/snippets/ctp_select_dataset_type_form.html",
             "pkg_dict": {},

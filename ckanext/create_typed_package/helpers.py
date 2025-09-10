@@ -11,11 +11,16 @@ def get_helpers():
     return {
         "ctp_use_separate_route": ctp_use_separate_route,
         "ctp_available_types": ctp_available_types,
+        "ctp_replace_dataset_button": ctp_replace_dataset_button,
     }
 
 
 def ctp_use_separate_route():
     return config.use_separate_route()
+
+
+def ctp_replace_dataset_button():
+    return config.use_replace_button()
 
 
 def ctp_available_types() -> list[dict[str, Any]]:

@@ -56,7 +56,7 @@ scheming.dataset_schemas =
                          ckanext.create_typed_package.tests:schemas/third.yaml
 ```
 
-Restart CKAN. Because of custom datset types, apart from the standard dataset
+Restart CKAN. Because of custom dataset types, apart from the standard dataset
 listing available at `/dataset/`, you also have 3 new endpoints, one per custom
 dataset type:
 
@@ -82,13 +82,18 @@ you'll see the modal where you can select the exact type you want to create:
 That's the main feature provided by the current plugin.
 
 Note, if you don't see the modal, check the JavaScript console for errors. If
-you see no errors or cannot fix them, thre is an alternative way.
+you see no errors or cannot fix them, there is an alternative way.
 
-Modify the templates and add linkg to `/dataset/select-type`. This page does
+Modify the templates and add link to `/dataset/select-type`. This page does
 not exist yet and in order to fix it, add
 `create_typed_package.use_separate_route = true` to the CKAN config file. Then
 reload the application and now you'll see dataset type selector on this new
 route.
+
+You can avoid modifications by adding
+`create_typed_package.replace_dataset_button = true` to the CKAN config file:
+this option overrides the original **Add dataset** button. If you don't need
+something fancy, prefer this option for simplicity.
 
 ![Selector on separate page](https://github.com/DataShades/ckanext-create_typed_package/raw/master/img/separate-route.png)
 
@@ -138,33 +143,40 @@ Dataset**.
 
 ## Config settings
 
-    # Build list of package types using ckanext-scheming API instead of
-	# internal CKAN's package_type registry
-	# (optional, default: false).
-	create_typed_package.use_scheming = true
+```ini
+# Build list of package types using ckanext-scheming API instead of
+# internal CKAN's package_type registry
+# (optional, default: false).
+create_typed_package.use_scheming = true
 
-	# Additional types that are not are not automatically added to the
-	# list for some reason
-	# (optional, default: []).
-	create_typed_package.additional_types = custom_type another_type
+# Additional types that are not are not automatically added to the
+# list for some reason
+# (optional, default: []).
+create_typed_package.additional_types = custom_type another_type
 
-	# Package types that need to be excluded from the list of available
-	# types
-	# (optional, default: []).
-	create_typed_package.exclude_types = custom_type another_type
+# Package types that need to be excluded from the list of available
+# types
+# (optional, default: []).
+create_typed_package.exclude_types = custom_type another_type
 
-	# After clicking on "Add datset" button redirect user to special
-	# page with dataset type selector instead of using in-place modal
-	# (optional, default: false).
-	create_typed_package.use_separate_route = true
+# After clicking on "Add dataset" button redirect user to special
+# page with dataset type selector instead of using in-place modal
+# (optional, default: false).
+create_typed_package.use_separate_route = true
 
-	# URL where the special page with dataset type selector will be registered.
-	# (optional, default: /dataset/select-type).
-	create_typed_package.route_path = /create-package/select-type
+# Replace "Add Dataset" button with the link to type selection. Works
+# only when `create_typed_package.use_separate_route` enabled as well
+# (optional, default: false).
+create_typed_package.replace_dataset_button = true
 
-	# Custom label for dataset type. It will be used by `ctp_list_types`
-	# action and, as result, by the type-picker UI widget. Labels provided in a
-	# form `create_typed_package.label_for.<TYPE>`, where machine-name for a type
-	# is used instead of `<TYPE>`.
-	# (optional, default: tk._(type_machine_name)).
-	create_typed_package.label_for.dataset = Publication
+# URL where the special page with dataset type selector will be registered.
+# (optional, default: /dataset/select-type).
+create_typed_package.route_path = /create-package/select-type
+
+# Custom label for dataset type. It will be used by `ctp_list_types`
+# action and, as result, by the type-picker UI widget. Labels provided in a
+# form `create_typed_package.label_for.<TYPE>`, where machine-name for a type
+# is used instead of `<TYPE>`.
+# (optional, default: tk._(type_machine_name)).
+create_typed_package.label_for.dataset = Publication
+```

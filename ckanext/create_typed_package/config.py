@@ -10,6 +10,7 @@ ROUTE_PATH = "create_typed_package.route_path"
 USE_SEPARATE_ROUTE = "create_typed_package.use_separate_route"
 
 USE_SCHEMING = "create_typed_package.use_scheming"
+REPLACE_BUTTON = "create_typed_package.replace_dataset_button"
 ADDITIONAL_TYPES = "create_typed_package.additional_types"
 EXCLUDE_TYPES = "create_typed_package.exclude_types"
 SORTER = "create_typed_package.sorter"
@@ -37,3 +38,7 @@ def exclude_types() -> list[str]:
 
 def sorter() -> Callable[[Any], Any]:
     return import_string(tk.config[SORTER])
+
+
+def use_replace_button() -> bool:
+    return tk.config[REPLACE_BUTTON]
